@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 
@@ -14,17 +15,19 @@ namespace CassieBreaker.Patches
         {
             List<CodeInstruction> newInstructions = instructions.ToList();
             var ret = generator.DefineLabel();
-
-            newInstructions.InsertRange(13, new []
+            int index = instructions.ToList().FindIndex(x => x.opcode == OpCodes.Call && x.operand is MethodBase method && method.Name == "SendToAuthenticated");
+            newInstructions.InsertRange(index, new []
             {
                 new CodeInstruction(OpCodes.Ldsfld, AccessTools.Field(typeof(Plugin), nameof(Plugin.Instance))),
                 new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Plugin), nameof(Plugin.Config))),
                 new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Config), nameof(Config.CassieLyricsEnabled))),
                 new CodeInstruction(OpCodes.Brfalse_S, ret)
             });
-            newInstructions[23].labels.Add(ret);
+            newInstructions[index + 4].labels.Add(ret);
             foreach (var instruction in newInstructions)
+            {
                 yield return instruction;
+            }
         }
         [HarmonyTranspiler]
         [HarmonyPatch(nameof(Recontainer079.Recontain))]
@@ -32,17 +35,19 @@ namespace CassieBreaker.Patches
         {
             List<CodeInstruction> newInstructions = instructions.ToList();
             var ret = generator.DefineLabel();
-
-            newInstructions.InsertRange(18, new []
+            int index = instructions.ToList().FindIndex(x => x.opcode == OpCodes.Call && x.operand is MethodBase method && method.Name == "SendToAuthenticated");
+            newInstructions.InsertRange(index, new []
             {
                 new CodeInstruction(OpCodes.Ldsfld, AccessTools.Field(typeof(Plugin), nameof(Plugin.Instance))),
                 new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Plugin), nameof(Plugin.Config))),
                 new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Config), nameof(Config.CassieLyricsEnabled))),
                 new CodeInstruction(OpCodes.Brfalse_S, ret)
             });
-            newInstructions[22].labels.Add(ret);
+            newInstructions[index + 4].labels.Add(ret);
             foreach (var instruction in newInstructions)
+            {
                 yield return instruction;
+            }
         }
         [HarmonyTranspiler]
         [HarmonyPatch(nameof(Recontainer079.UpdateStatus))]
@@ -50,17 +55,19 @@ namespace CassieBreaker.Patches
         {
             List<CodeInstruction> newInstructions = instructions.ToList();
             var ret = generator.DefineLabel();
-
-            newInstructions.InsertRange(51, new []
+            int index = instructions.ToList().FindIndex(x => x.opcode == OpCodes.Call && x.operand is MethodBase method && method.Name == "SendToAuthenticated");
+            newInstructions.InsertRange(index, new []
             {
                 new CodeInstruction(OpCodes.Ldsfld, AccessTools.Field(typeof(Plugin), nameof(Plugin.Instance))),
                 new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Plugin), nameof(Plugin.Config))),
                 new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Config), nameof(Config.CassieLyricsEnabled))),
                 new CodeInstruction(OpCodes.Brfalse_S, ret)
             });
-            newInstructions[60].labels.Add(ret);
+            newInstructions[index + 4].labels.Add(ret);
             foreach (var instruction in newInstructions)
+            {
                 yield return instruction;
+            }
         }
     }
 }
