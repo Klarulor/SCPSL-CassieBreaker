@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{DAE4ADA3-8D94-4C84-BECF-EF6BDB75FB83}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>CassieBreaker</RootNamespace>
+        <AssemblyName>CassieBreaker</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>D:\Work\SCPSL\sost\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+          <HintPath>..\..\..\sost\sost_\Assembly-CSharp-Publicized.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+            <HintPath>D:\Work\SCPSL\sost\Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
+        <Reference Include="CommandSystem.Core">
+            <HintPath>D:\Work\SCPSL\sost\CommandSystem.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.API">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.API.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.CreditTags">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.CreditTags.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.CustomItems">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.CustomItems.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.CustomRoles">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.CustomRoles.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.Events">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.Events.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.Loader">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.Loader.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.Permissions">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.Permissions.dll</HintPath>
+        </Reference>
+        <Reference Include="Exiled.Updater">
+            <HintPath>D:\Work\SCPSL\sost\Exiled.Updater.dll</HintPath>
+        </Reference>
+        <Reference Include="Mirror">
+            <HintPath>D:\Work\SCPSL\sost\Mirror.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>D:\Work\SCPSL\sost\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="SemVer">
+            <HintPath>D:\Work\SCPSL\sost\SemVer.dll</HintPath>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.ComponentModel.DataAnnotations">
+            <HintPath>D:\Work\SCPSL\sost\System.ComponentModel.DataAnnotations.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Security.Permissions">
+            <HintPath>D:\Work\SCPSL\sost\System.Security.Permissions.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Xml" />
+        <Reference Include="UnityEngine">
+            <HintPath>D:\Work\SCPSL\sost\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>D:\Work\SCPSL\sost\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath>D:\Work\SCPSL\sost\UnityEngine.PhysicsModule.dll</HintPath>
+        </Reference>
+        <Reference Include="YamlDotNet">
+            <HintPath>D:\Work\SCPSL\sost\YamlDotNet.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Config.cs" />
+        <Compile Include="Patches\NineTailedFoxNamingRulePatch.cs" />
+        <Compile Include="Patches\RespawnEffectControllerPatch.cs" />
+        <Compile Include="Plugin.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Properties" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
