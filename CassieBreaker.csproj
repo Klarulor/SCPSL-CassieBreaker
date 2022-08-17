@@ -102,7 +102,10 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Config.cs" />
+        <Compile Include="Patches\AlphaWarheadPatch.cs" />
+        <Compile Include="Patches\DecontaminationControllerPatch.cs" />
         <Compile Include="Patches\NineTailedFoxNamingRulePatch.cs" />
+        <Compile Include="Patches\Recontainer079Patch.cs" />
         <Compile Include="Patches\RespawnEffectControllerPatch.cs" />
         <Compile Include="Plugin.cs" />
     </ItemGroup>
